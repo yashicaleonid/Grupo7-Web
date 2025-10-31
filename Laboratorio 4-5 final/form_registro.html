@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Registro de cita medica</h1>
+    <form action="insertar_registro.php" method="post">
+        <label for="medico">Medico:</label><br>
+        <select name="id_medico" id="">
+            <option value="">Seleccione</option>
+            <option value="1">Dr. Juan Perez</option>
+            <option value="2">Dra. Susana Gomez</option>
+            <option value="3">Dr. Carlos Montellano</option>
+        </select><br><br>
+        <label for="paciente">Paciente:</label><br>
+        <select name="id_paciente" id="">
+            <option value="">Seleccione</option>
+            <option value="10">Maria Lopez</option>
+            <option value="20">Roberto Sanchez</option>
+            <option value="30">Alfredo Godofredo</option>
+        </select><br><br>
+        <label for="fecha">Fecha:</label><br>
+        <input type="date" name="fecha_cita"><br><br>
+        <label for="hora">Hora:</label><br>
+        <input type="time" name="hora_cita"><br><br>
+        <input type="submit" value="Registrar cita">    
+        <input type="reset" value="Limpiar formulario"><br><br>
+        <label for="motivo">Motivo:</label><br>
+        <textarea name="motivo" id="" rows="5" ></textarea>
+    </form>
+</body>
+</html>

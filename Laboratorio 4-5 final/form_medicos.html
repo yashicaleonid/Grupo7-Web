@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro_Médicos</title>
+</head>
+<body>
+    <h1> Registro de Médicos</h1>
+    <form action="javascript:insertarmedico()" method="POST" id="formmedico"> 
+        <label for="nombre">Nombre</label><br>
+        <input type="text" name="nombre" required><br>
+        <label for="especialidad">Especialidad</label><br>
+        <input type="text" name="especialidad" required><br>
+        <label for="telefono">Teléfono</label><br>
+        <input type="text" name="telefono" required><br>
+        <label for="correo">Correo electrónico</label><br>
+        <input type="email" name="correo" required><br>
+        <input type="submit" value="Registrar">
+    </form>
+    
+</body>
+</html>
