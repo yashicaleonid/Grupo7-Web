@@ -1,0 +1,36 @@
+.registromedicos{
+    background-color: #d0ffe0;
+    width: 400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 100px;
+    padding: 30px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.registrospacientes{
+    background-color: #fdd4ee;
+    width: 400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 100px;
+    padding: 30px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.encabezado{
+    display: flex;
+    align-items: center;
+}
+
+.medicos{
+    background-color: #d2f0e2;
+    font-family: Arial, sans-serif;
+}
+

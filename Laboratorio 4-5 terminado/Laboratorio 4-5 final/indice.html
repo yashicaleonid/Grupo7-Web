@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .contenedor {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid black;
+            margin: 0 auto;
+            width: 50%;
+            margin-top: 40px;
+            padding-bottom: 50px;
+            background-color: rgb(109, 173, 173);
+            margin-bottom: 40px;
+        }
+        .menu {
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+            padding: 10px;
+            border: 1px solid black;
+            background-color: rgb(5, 48, 48);
+        }
+        .menu button{
+            background-color: white;
+        }
+
+        .menu button a{
+            text-decoration: none;
+            color: black;
+        }
+
+        .menu button:hover {
+            background-color: rgb(168, 168, 246);
+        }
+
+        .mensaje {
+            border: 1px solid black;
+            border-radius: 1px;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="contenedor">
+        <h1>Citas Medicas</h1>
+        <div class="menu">
+            <button><a href="javascript:mostrar('form_medicos.html')">INSERTAR MEDICO</a></button><br><br>
+            <button><a href="javascript:mostrar('form_pacientes.html')">INSERTAR PACIENTE</a></button><br><br>
+            <button><a href="javascript:mostrar('readmedicos.php')">LISTAR MEDICOS</a></button>
+            <button><a href="javascript:mostrar('readpacientes.php')">LISTAR PACIENTES</a></button>
+        </div>
+        <div id="contenido" class="cuerpo">
+        </div><br><br>
+        <div id="modal">
+            
+        </div>
+    </div>
+    <script src="fetch.js"></script>
+</body>
+</html>

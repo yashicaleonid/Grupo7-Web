@@ -18,7 +18,8 @@ function insertarmedico(){
         return response.text();
     })
     .then(html => {
-        document.querySelector('#contenido').innerHTML = html;
+        mdl("Medico");
+        mostrar("form_medicos.html");
     })
 }
 
@@ -28,8 +29,10 @@ function eliminarmedico(id){
         return response.text();
     })
     .then(html=>{
-        document.querySelector('#contenido').innerHTML = html;
+        mdl("Eliminar Medico");
+        mostrar("readmedicos.php");
     })
+    
 }
 
 function insertarpaciente(){
@@ -42,7 +45,8 @@ function insertarpaciente(){
         return response.text();
     })
     .then(html => {
-        document.querySelector('#contenido').innerHTML = html;
+        mdl("Paciente");
+        mostrar("form_pacientes.html");
     })
 }
 
@@ -52,8 +56,10 @@ function eliminarpaciente(id){
         return response.text();
     })
     .then(html=>{
-        document.querySelector('#contenido').innerHTML = html;
+       mdl("Eliminar Paciente");
+       mostrar("readpacientes.php");
     })
+    
 }
 
 function editarmedico(id){
@@ -64,8 +70,10 @@ function editarmedico(id){
     .then(response=>{
         return response.text();
     })
-    .then(html=>{
-        document.querySelector('#contenido').innerHTML = html;
+    .then(html => {
+        mdl("Actualizar Medico");
+        mostrar("readmedicos.php");
+
     })
 }
 
@@ -77,7 +85,20 @@ function editarPaciente(id){
     .then(response=>{
         return response.text();
     })
-    .then(html=>{
-        document.querySelector('#contenido').innerHTML = html;
+    .then(html => {
+        mdl("Actualizar Paciente");
+        mostrar("readpacientes.php");
     })
+}
+
+function mdl(tipo){
+    console.log("Ejecutando mdl con tipo:", tipo);
+    fetch(`notificaciones.php?tipo=${tipo}`)
+    .then(response => {
+        return response.text();
+    })
+    .then(html => {
+        document.querySelector('#modal').innerHTML = html;
+    })
+    setTimeout(() => { document.querySelector('#modal').innerHTML = '';}, 2000);
 }

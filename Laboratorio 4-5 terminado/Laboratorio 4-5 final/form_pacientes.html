@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regrtistro_Pacientes</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body{
+            background-color: #d2f0e2;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div class="registrospacientes" style="margin-top: 30px;">
+        <div class="encabezado">
+            <h1> Registro de Pacientes</h1>
+            <img src="images/paciente.png" alt="Paciente" class="img" style="width: 65px;">
+        </div>
+        <form action="javascript:insertarpaciente()" method="POST" id="formpaciente"> 
+            <label for="nombre">Nombre</label><br>
+            <input type="text" name="nombre" required><br>
+            <label for="documento">Documento de Identidad</label><br>
+            <input type="text" name="documento" required><br>
+            <label for="telefono">Teléfono</label><br>
+            <input type="text" name="telefono" required><br>
+            <label for="correo">Correo electrónico</label><br>
+            <input type="email" name="correo" required><br><br>
+            <input type="submit" value="Registrar">
+        </form>
+    </div>
+</body>
+</html>

@@ -13,18 +13,27 @@ $result = $con->query($sql);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        body{
+            background-color: #d2f0e2;
+            font-family: Arial, sans-serif;
+        }
+    </style>
     <script src="fetch.js"></script>
 </head>
 <body>
 
     <?php
     if ($result->num_rows > 0) {
-        echo "<table>";
-        echo "<tr>
+        echo "<br>";
+        echo '<div style="background-color: #d0ffe0; border: 1px solid #90ee90; display: inline-block; padding: 10px; margin-top: 30px; border-radius: 8px;">';
+        echo '<table border="1px"; style="border-collapse: collapse; background-color: white; border: 1px solid black;">';
+        echo '<tr>
             <th>Nombre</th>
             <th>Especialidad</th>
             <th>Telefono</th>
-            <th>Correo</th></tr>";
+            <th>Correo</th>
+            <th colspan="2">Acciones</th></tr>';
 
     while ($row = $result->fetch_assoc()) {
     echo "<tr>
@@ -37,8 +46,10 @@ $result = $con->query($sql);
         </tr>";
     }
         echo "</table>";
+        echo "</div>";
     } else {
-        echo "No hay medicos registrados";
+        echo "<br>";
+        echo '<div style="background-color: rgba(254, 254, 254, 1); border: 1px solid black; border-radius: 1px; padding: 5px;">No hay medicos registrados</div>';
     }
 
     $con->close();
