@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div style="display: inline-block; border: 2px solid rgb(60, 52, 207); padding: 20px;">
+       <form action="fdatos.php" method="post">
+            <div style="display: flex; flex-direction: row; gap: 100px;">
+                <label for="numero">Introduzca numero de alumnos:</label>
+                <select name="numero" style="border: 3px solid red;">
+                    <option value="2">2</option>
+                    <option value="4">4</option>
+                    <option value="6">6</option>
+                    <option value="8">8</option>
+                    <option value="10">10</option>
+                </select>
+            </div>
+            <br><br>
+            <div style="display: flex; flex-direction: row; gap: 250px;">
+               <input type="submit" value="Enviar" style="background-color: yellow;">
+                <button style="background-color: rgb(179, 240, 179);"><a href="read.php">Limpiar</a></button>
+            </div>
+        </form> 
+    </div>
+    
+</body>
+</html>
