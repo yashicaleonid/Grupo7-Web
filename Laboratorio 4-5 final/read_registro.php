@@ -1,8 +1,27 @@
 <?php
 include("conexion.php");
-  $read= $con->query("SELECT c.id AS id_cita, m.nombre AS medico, p.nombre AS paciente,c.fecha_cita,c.hora_cita,c.motivo 
-        FROM citas c LEFT JOIN medicos m ON c.id_medico = m.id
-        LEFT JOIN pacientes p ON c.id_paciente = p.id ORDER BY c.fecha_cita, c.hora_cita");
+$buscar="%%";
+$termino_busqueda = "";
+if (isset($_GET['buscar']))
+{
+   $termino_busqueda = $_GET['buscar'];
+   $buscar="%".$_GET['buscar'].'%';
+}
+$sql = "SELECT c.id AS id_cita, m.nombre AS medico, p.nombre AS paciente, c.fecha_cita, c.hora_cita, c.motivo, c.estado
+        FROM citas c 
+        LEFT JOIN medicos m ON c.id_medico = m.id
+        LEFT JOIN pacientes p ON c.id_paciente = p.id 
+        WHERE m.nombre LIKE ? OR p.nombre LIKE ? OR c.estado LIKE ? 
+        ORDER BY c.fecha_cita, c.hora_cita";
+        if ($stmt = $con->prepare($sql)) {
+    
+    $stmt->bind_param("sss", $buscar, $buscar, $buscar);
+
+  
+    $stmt->execute();
+    $read = $stmt->get_result();
+    
+}
 
 ?>
 
@@ -18,6 +37,7 @@ include("conexion.php");
             font-family: Arial, sans-serif;
         }
     </style>
+     <script src="fetch.js"></script>
 </head>
 <body>
 
@@ -31,7 +51,14 @@ include("conexion.php");
         <th>Fecha</th>
         <th>Hora</th>
         <th>Motivo</th>
+        <th>Acciones</th>
+        <th>Estado</th>
     </tr>
+    <form action="read_registro.php" method="get">
+    <label for="buscar">Buscar por Médico, Paciente o Estado:</label>
+    <input type="text" name="buscar" id="buscar" value="<?php echo $termino_busqueda; ?>">
+    <input type="submit" value="Buscar">
+    </form>
 
     <?php
    
@@ -44,7 +71,17 @@ include("conexion.php");
         echo "<td>" .$row['fecha_cita']. "</td>";
         echo "<td>" .$row['hora_cita']. "</td>";
         echo "<td>" .$row['motivo']. "</td>";
-        echo "</tr>";
+        echo "<td><a href=\"javascript:eliminarregistro({$row['id_cita']})\">Eliminar</a>
+      <a href=\"javascript:mostrar('form_editar_registro.php?id={$row['id_cita']}')\">Actualizar</a></td>";
+
+        echo "<td>
+        <select onchange=\"cambiarEstado(this, {$row['id_cita']})\">
+            <option value=\"Pendiente\" " . ($row['estado'] == 'Pendiente' ? 'selected' : '') . ">Pendiente</option>
+            <option value=\"Atendida\" " . ($row['estado'] == 'Atendida' ? 'selected' : '') . ">Atendida</option>
+            <option value=\"Cancelada\" " . ($row['estado'] == 'Cancelada' ? 'selected' : '') . ">Cancelada</option>
+        </select>
+      </td>";
+       
     }
 }
    

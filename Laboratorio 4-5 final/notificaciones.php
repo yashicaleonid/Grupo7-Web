@@ -9,6 +9,12 @@
     case "Paciente":
         echo '<div class="mensaje" style="background-color: rgba(82, 245, 88, 1);">Se ha insertado correctamente un paciente</div>';
         break;
+    case "Cita":
+        echo '<div class="mensaje" style="background-color: rgba(82, 245, 88, 1);">Se ha insertado correctamente una cita</div>';
+        break;
+    case "Citav":
+        echo '<div class="mensaje" style="background-color: rgba(246, 107, 60, 1);">La cita ya existe para el medico en la fecha y hora seleccionada</div>';
+        break;
     case "Eliminar Medico":
         echo '<div class="mensaje" style="background-color: rgba(239, 100, 82, 1);">Se ha eliminado correctamente el medico</div>';
         break;
@@ -24,6 +30,11 @@
     case "Error":
         echo '<div class="mensaje">Ocurrió un error al procesar la petición</div>';
         break;
+    case "Estado":
+         echo '<div class="mensaje" style="background-color: rgba(82, 245, 88, 1);">
+            Estado de la cita actualizado correctamente</div>';
+          break;
+
     default:
         echo '<div class="mensaje">Acción completada</div>';
         break;

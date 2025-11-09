@@ -27,6 +27,7 @@ $medicos = [];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="fetch.js"></script>
     <style>
         body{
             background-color: #d2f0e2;
@@ -51,7 +52,7 @@ $medicos = [];
         <div class="encabezado">
             <h1>Registro de cita medica</h1>
         </div>
-        <form action="insertar_registro.php" method="post">
+        <form action="javascript:insertarregistro()" method="POST" id="formcita">
         <label for="medico">Medico:</label><br>
         <select name="id_medico">
                     <?php
@@ -73,14 +74,16 @@ $medicos = [];
                     ?>
         </select><br><br>
         <label for="fecha">Fecha:</label><br>
-        <input type="date" name="fecha_cita"><br><br>
+        <input type="date" name="fecha_cita" id="fecha_cita"><br><br>
         <label for="hora">Hora:</label><br>
-        <input type="time" name="hora_cita"><br><br>
-        <input type="submit" value="Registrar cita">    
-        <input type="reset" value="Limpiar formulario"><br><br>
+        <input type="time" name="hora_cita" id="hora_cita"><br><br>
+     
         <label for="motivo">Motivo:</label><br>
-        <textarea name="motivo" id="" rows="5" ></textarea>
+        <textarea name="motivo" id="morito" rows="5" ></textarea><br><br>
+           <input type="submit" value="Registrar cita"> 
+
+        <input type="reset" value="Limpiar formulario">
         </form>
     </div>
 </body>
-</html>
+</html> 

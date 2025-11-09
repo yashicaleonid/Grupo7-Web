@@ -15,13 +15,12 @@ $stmt->execute();
 $result=$stmt->get_result();
 
 if($result->num_rows>0){
-    echo "La cita ya existe para el medico en la fecha y hora seleccionada.";
+    echo "Citav";
 }else{
     $insert="INSERT INTO citas(id_medico,id_paciente,fecha_cita,hora_cita,motivo) VALUES(?,?,?,?,?)";
     $stmt_insert=$con->prepare($insert);
     $stmt_insert->bind_param("iisss",$id_medico,$id_paciente,$fecha_cita,$hora_cita,$motivo);
     if($stmt_insert->execute()){
-        echo "Cita registrada correctamente.";  }
+        echo "Cita";  }
 }
 ?>
-<meta http-equiv="refresh" content="2;url=read_registro.php">

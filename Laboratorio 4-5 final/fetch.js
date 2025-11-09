@@ -23,6 +23,7 @@ function insertarmedico(){
     })
 }
 
+
 function eliminarmedico(id){
     fetch(`eliminar_medico.php?id=${id}`)
     .then(response=>{
@@ -102,3 +103,60 @@ function mdl(tipo){
     })
     setTimeout(() => { document.querySelector('#modal').innerHTML = '';}, 2000);
 }
+
+
+
+function insertarregistro() {
+    var dtformcita = document.querySelector('#formcita');
+    var datoscita = new FormData(dtformcita);
+
+    fetch("insertar_registro.php", { method: "POST", body: datoscita })
+        .then(response => response.text())
+        .then(respuesta => {
+            if (respuesta === "Cita") {
+                mdl("Cita");
+                mostrar("form_registro.php");
+            } else if (respuesta === "Citav") {
+                mdl("Citav");
+            }
+        });
+}
+
+function eliminarregistro(id){
+    fetch(`eliminar_registro.php?id=${id}`)
+    .then(response=>{
+        return response.text();
+    })
+    .then(html=>{
+       mdl("Eliminar Cita");
+       mostrar("read_registro.php");
+    })
+    
+    }
+    function editarregistro(id){
+    var dtformeditarregistro= document.querySelector('#formeditarregistro')
+    var datoseditarregistro = new FormData(dtformeditarregistro);
+    datoseditarregistro.append("id", id);
+    fetch("editar_registro.php", {method:"POST", body:datoseditarregistro})
+    .then(response=>{
+        return response.text();
+    })
+    .then(html => {
+        mdl("Actualizar Cita");
+        mostrar("read_registro.php");
+    })
+}
+function cambiarEstado(selectElement, idCita) {
+        let nuevo_estado = selectElement.value;
+    fetch("estado.php", { method: "POST", headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: `id=${idCita}&estado=${nuevo_estado}`
+    })
+    .then(response => response.text())
+    .then(respuesta => {
+        if (respuesta === "Estado") {
+            mdl("Estado");
+        } 
+    });
+}
+
+
