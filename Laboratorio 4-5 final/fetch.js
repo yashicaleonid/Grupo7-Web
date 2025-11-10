@@ -159,4 +159,13 @@ function cambiarEstado(selectElement, idCita) {
     });
 }
 
+function read_citas() {
+    var form = document.querySelector('#form_buscar');
+    var datos = new FormData(form);
 
+    fetch("read_registro.php", {method: "POST",body: datos})
+    .then(response => response.text())
+    .then(html => {
+        document.querySelector('#contenido').innerHTML = html;
+    });
+}

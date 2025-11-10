@@ -3,9 +3,9 @@ include("conexion.php");
 $buscar = "%%";
 $termino_busqueda = "";
 
-if (isset($_GET['buscar'])) {
-    $termino_busqueda = $_GET['buscar'];
-    $buscar = "%" . $_GET['buscar'] . "%";
+if (isset($_POST['buscar'])) {
+    $termino_busqueda = $_POST['buscar'];
+    $buscar = "%" . $_POST['buscar'] . "%";
 }
 $sql = "SELECT c.id AS id_cita, m.nombre AS medico, p.nombre AS paciente, 
                c.fecha_cita, c.hora_cita, c.motivo, c.estado
@@ -48,11 +48,13 @@ $read = $stmt->get_result();
     <script src="fetch.js"></script>
 </head>
 <body>
-<form action="read_registro.php" method="get" style="text-align:center;">
+<br>
+<form action="javascript:read_citas()" method="post" style="text-align:center;" id="form_buscar">
     <label for="buscar">Buscar por Médico, Paciente o Estado:</label>
     <input type="text" name="buscar" id="buscar" value="<?php echo $termino_busqueda; ?>">
     <input type="submit" value="Buscar">
 </form>
+<br>
 
 
 <table>
